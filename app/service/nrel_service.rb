@@ -12,7 +12,7 @@ class NrelService
   end
 
   def search_by_zipcode
-    response = @conn.get("/nearest.json?location=#{zipcode}")
+    response = @conn.get("/nearest.json?location=#{@zipcode}")
     byebug
     JSON.parse(response.body)
   end
