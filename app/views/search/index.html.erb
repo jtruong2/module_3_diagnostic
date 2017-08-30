@@ -1,0 +1,13 @@
+<h1>Search results zipcode</h1>
+<ul>
+  <% @results.each do |result| %>
+    <p>Station name: <%= result.station_name %></p>
+    <p>Address:
+      <%= result.street_address %>
+      <%= result.city %>, <%= result.state %> <%= result.zip %>
+    </p>
+    <p>Fuel type: <%= result.fuel_type_code %></p>
+    <p>Access times: <%= result.access_days_time %></p>
+    <!-- <p>Distance: </p> -->
+  <% end %>
+</ul>
