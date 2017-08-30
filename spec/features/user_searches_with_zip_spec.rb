@@ -10,7 +10,6 @@ RSpec.describe "User enters zipcode in search" do
     click_on "Locate"
 
     output = JSON.parse(response.body)
-
       VCR.use_cassette("cassettes/user_searches_by_80203") do
       # Then I should be on page "/search" with parameters visible in the url
       expect(current_path).to eq(search_path)
