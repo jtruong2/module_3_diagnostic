@@ -1,7 +1,7 @@
 class NrelService
   def initialize(zipcode)
     @zipcode = zipcode[:q]
-    @conn = Faraday::Connection.new(:url => "https://api.data.gov/nrel/alt-fuel-stations/v1") do |faraday|
+    @conn = Faraday::Connection.new("https://api.data.gov/nrel/alt-fuel-stations/v1") do |faraday|
       faraday.headers["X-API-KEY"] = ENV["API_KEY"]
       faraday.adapter Faraday.default_adapter
     end
@@ -12,7 +12,7 @@ class NrelService
   end
 
   def search_by_zipcode
-    response = @conn.get("/nearest.json?location=#{@zipcode}")
+    response = @conn.get("/nearest.json?location=#{@zipcode}&radius=6")
     byebug
     JSON.parse(response.body, symbolize_names: true)
   end
